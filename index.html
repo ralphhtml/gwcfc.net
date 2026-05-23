@@ -91,21 +91,15 @@
     /* HERO */
     .hero {
       display: grid;
-      grid-template-columns: 3fr 1fr;
+      grid-template-columns: 1fr 1fr;
       min-height: calc(100vh - 64px);
-      align-items: stretch;
-      gap: 0;
-      padding: 0;
+      align-items: center;
+      gap: 48px;
+      padding: 64px;
       background: radial-gradient(ellipse at 20% 50%, rgba(180,0,0,0.08) 0%, transparent 60%);
     }
 
-    .hero-content {
-      max-width: 560px;
-      padding: 64px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+    .hero-content { max-width: 560px; }
 
     .hero-badge {
       display: inline-flex;
@@ -179,9 +173,10 @@
 
     .hero-map {
       width: 100%;
-      height: 100%;
+      aspect-ratio: 4/3;
       background: var(--bg3);
-      border: none;
+      border-radius: 16px;
+      border: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -191,7 +186,6 @@
       text-transform: uppercase;
       position: relative;
       overflow: hidden;
-      clip-path: polygon(100% 0%, 100% 100%, 15% 100%, 0% 90%, 22% 78%, 0% 66%, 22% 54%, 0% 42%, 22% 30%, 0% 18%, 15% 6%, 15% 0%);
     }
 
     .hero-map::before {
@@ -210,27 +204,21 @@
     /* SECTION 2 */
     .section2 {
       display: grid;
-      grid-template-columns: 1fr 3fr;
+      grid-template-columns: 1fr 1fr;
       min-height: 80vh;
-      align-items: stretch;
-      gap: 0;
-      padding: 0;
+      align-items: center;
+      gap: 64px;
+      padding: 80px 64px;
       background: var(--bg2);
       border-top: 1px solid var(--border);
     }
 
-    .section2-content {
-      padding: 80px 64px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
     .section2-img {
       width: 100%;
-      height: 100%;
+      aspect-ratio: 4/3;
       background: var(--bg3);
-      border: none;
+      border-radius: 16px;
+      border: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -240,7 +228,6 @@
       text-transform: uppercase;
       position: relative;
       overflow: hidden;
-      clip-path: polygon(0% 0%, 85% 0%, 85% 6%, 100% 18%, 78% 30%, 100% 42%, 78% 54%, 100% 66%, 78% 78%, 100% 90%, 85% 100%, 0% 100%);
     }
 
     .section2-img::before {
@@ -254,6 +241,7 @@
 
     .section2-img span { position: relative; z-index: 1; }
 
+    .section2-content {}
 
     .section2-label {
       font-size: 11px;
@@ -310,41 +298,8 @@
       font-size: 13px;
     }
 
-    /* BOLT DIVIDER */
-    .hero, .section2 { position: relative; }
-
-    .bolt-divider {
-      position: absolute;
-      top: 0;
-      height: 100%;
-      width: 80px;
-      display: flex;
-      align-items: stretch;
-      justify-content: center;
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    .hero .bolt-divider {
-      left: 75%;
-      transform: translateX(-50%);
-    }
-
-    .section2 .bolt-divider {
-      left: 25%;
-      transform: translateX(-50%);
-    }
-
-    .bolt-divider img {
-      height: 100%;
-      width: 100%;
-      object-fit: fill;
-      filter: drop-shadow(0 0 16px rgba(240,184,0,0.6));
-    }
-
     /* RESPONSIVE */
     @media (max-width: 768px) {
-      .bolt-divider { display: none; }
       .hero, .section2 {
         grid-template-columns: 1fr;
         padding: 40px 24px;
@@ -453,7 +408,6 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="bolt-divider"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MzAgNTIwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMjAlIiB5MT0iMCUiIHgyPSI4MCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmZmZjQ0Ii8+PHN0b3Agb2Zmc2V0PSIzMCUiIHN0b3AtY29sb3I9IiNmZmQ3MDAiLz48c3RvcCBvZmZzZXQ9IjcwJSIgc3RvcC1jb2xvcj0iI2YwYTgwMCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2M4NzAwMCIvPjwvbGluZWFyR3JhZGllbnQ+PGZpbHRlciBpZD0ic2giPjxmZURyb3BTaGFkb3cgZHg9IjMiIGR5PSIzIiBzdGREZXZpYXRpb249IjQiIGZsb29kLWNvbG9yPSIjN2E0ODAwIiBmbG9vZC1vcGFjaXR5PSIwLjQ1Ii8+PC9maWx0ZXI+PC9kZWZzPjxwb2x5Z29uIHBvaW50cz0iMTE1LDEwIDQ2MCwxMCAyNzUsMjQwIDQwMCwyNDAgODAsNTEwIDEwLDUxMCAyMjAsMjY1IDk1LDI2NSIgZmlsbD0idXJsKCNiZykiIHN0cm9rZT0iI2I4NzgwMCIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWx0ZXI9InVybCgjc2gpIi8+PC9zdmc+Cg==" alt="" style="width:100%;height:100%;object-fit:fill;" /></div>
     <div class="hero-content">
       <h1>Join the <span>#1 Tropical</span> Weather Server</h1>
       <p class="hero-desc">
@@ -471,7 +425,6 @@
 
   <!-- SECTION 2 -->
   <section class="section2">
-    <div class="bolt-divider"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MzAgNTIwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMjAlIiB5MT0iMCUiIHgyPSI4MCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmZmZjQ0Ii8+PHN0b3Agb2Zmc2V0PSIzMCUiIHN0b3AtY29sb3I9IiNmZmQ3MDAiLz48c3RvcCBvZmZzZXQ9IjcwJSIgc3RvcC1jb2xvcj0iI2YwYTgwMCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2M4NzAwMCIvPjwvbGluZWFyR3JhZGllbnQ+PGZpbHRlciBpZD0ic2giPjxmZURyb3BTaGFkb3cgZHg9IjMiIGR5PSIzIiBzdGREZXZpYXRpb249IjQiIGZsb29kLWNvbG9yPSIjN2E0ODAwIiBmbG9vZC1vcGFjaXR5PSIwLjQ1Ii8+PC9maWx0ZXI+PC9kZWZzPjxwb2x5Z29uIHBvaW50cz0iMTE1LDEwIDQ2MCwxMCAyNzUsMjQwIDQwMCwyNDAgODAsNTEwIDEwLDUxMCAyMjAsMjY1IDk1LDI2NSIgZmlsbD0idXJsKCNiZykiIHN0cm9rZT0iI2I4NzgwMCIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWx0ZXI9InVybCgjc2gpIi8+PC9zdmc+Cg==" alt="" style="width:100%;height:100%;object-fit:fill;" /></div>
     <div class="section2-img">
       <span>Image</span>
     </div>
