@@ -298,8 +298,32 @@
       font-size: 13px;
     }
 
+    /* BOLT DIVIDER */
+    .hero, .section2 { position: relative; }
+
+    .bolt-divider {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      height: 100%;
+      width: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .bolt-divider svg {
+      height: 70%;
+      width: auto;
+      filter: drop-shadow(0 0 18px rgba(240,184,0,0.55));
+    }
+
     /* RESPONSIVE */
     @media (max-width: 768px) {
+      .bolt-divider { display: none; }
       .hero, .section2 {
         grid-template-columns: 1fr;
         padding: 40px 24px;
@@ -408,6 +432,7 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="bolt-divider"><svg viewBox="0 0 60 120" xmlns="http://www.w3.org/2000/svg"><polygon points="38,0 8,68 28,68 14,120 58,50 34,50" fill="#f0b800"/></svg></div>
     <div class="hero-content">
       <h1>Join the <span>#1 Tropical</span> Weather Server</h1>
       <p class="hero-desc">
@@ -425,6 +450,7 @@
 
   <!-- SECTION 2 -->
   <section class="section2">
+    <div class="bolt-divider"><svg viewBox="0 0 60 120" xmlns="http://www.w3.org/2000/svg"><polygon points="38,0 8,68 28,68 14,120 58,50 34,50" fill="#f0b800"/></svg></div>
     <div class="section2-img">
       <span>Image</span>
     </div>
