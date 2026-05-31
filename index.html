@@ -401,7 +401,7 @@
           <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
           Home
         </a></li>
-        <li><a href="/radar" title="Radar">
+        <li><a href="#" onclick="radarAuth(event)" title="Radar">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6a6 6 0 1 0 6 6A6 6 0 0 0 12 6zm0 10a4 4 0 1 1 4-4 4 4 0 0 1-4 4z"/><path d="M12 12 19.07 4.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           Radar
         </a></li>
@@ -477,6 +477,45 @@
   <footer>
     &copy; 2026 GWCFC.net, The #1 Tropical Weather Community
   </footer>
+
+  <div id="radar-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center;">
+    <div style="background:#1a0000;border:2px solid #cc0000;border-radius:12px;padding:32px 28px;max-width:340px;width:90%;text-align:center;">
+      <h2 style="color:#fff;margin:0 0 8px;font-size:20px;">Radar Access</h2>
+      <p style="color:#aaa;font-size:14px;margin:0 0 18px;">Enter the passcode to continue</p>
+      <input id="radar-input" type="password" placeholder="Passcode" style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #cc0000;background:#2a0000;color:#fff;font-size:16px;box-sizing:border-box;outline:none;" onkeydown="if(event.key==='Enter')radarSubmit()" />
+      <p id="radar-error" style="color:#ff4444;font-size:13px;margin:8px 0 0;display:none;">Incorrect passcode</p>
+      <div style="display:flex;gap:10px;margin-top:18px;">
+        <button onclick="radarClose()" style="flex:1;padding:10px;border-radius:8px;border:1px solid #555;background:transparent;color:#aaa;cursor:pointer;font-size:14px;">Cancel</button>
+        <button onclick="radarSubmit()" style="flex:1;padding:10px;border-radius:8px;border:none;background:#cc0000;color:#fff;cursor:pointer;font-size:14px;font-weight:600;">Enter</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function radarAuth(e) {
+      e.preventDefault();
+      var m = document.getElementById('radar-modal');
+      m.style.display = 'flex';
+      document.getElementById('radar-input').value = '';
+      document.getElementById('radar-error').style.display = 'none';
+      setTimeout(function(){ document.getElementById('radar-input').focus(); }, 50);
+    }
+    function radarSubmit() {
+      if (document.getElementById('radar-input').value === 'haha67') {
+        radarClose();
+        window.location.href = '/radar';
+      } else {
+        document.getElementById('radar-error').style.display = 'block';
+        document.getElementById('radar-input').value = '';
+      }
+    }
+    function radarClose() {
+      document.getElementById('radar-modal').style.display = 'none';
+    }
+    document.getElementById('radar-modal').addEventListener('click', function(e) {
+      if (e.target === this) radarClose();
+    });
+  </script>
 
 </body>
 </html>
